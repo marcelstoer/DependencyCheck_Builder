@@ -21,6 +21,8 @@ jobs:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '11'
       - name: update
+        env:
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
           curl https://github.com/jeremylong/Open-Vulnerability-Project/releases/download/v6.1.1/vulnz-6.1.1.jar -s -L -o vulnz.jar
           git reset --soft HEAD~1
