@@ -20,19 +20,11 @@ jobs:
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '11'
-      - name: validate
-        env:
-          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
-        run: |
-          e=`expr "$NVD_API_KEY" : '.*'`
-          s=$((n-5))
-          echo "'${NVD_API_KEY:0:5}'"
-          echo "'${NVD_API_KEY:$s:5}'"
       - name: update
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
-          curl https://github.com/jeremylong/Open-Vulnerability-Project/releases/download/v6.1.4/vulnz-6.1.4.jar -s -L -o vulnz.jar
+          curl https://github.com/jeremylong/Open-Vulnerability-Project/releases/download/v6.1.5/vulnz-6.1.5.jar -s -L -o vulnz.jar
           git reset --soft HEAD~1
           ls -la .
           java -jar vulnz.jar cve --cache --directory ./nvd_cache  --threads=1 --debug --delay=8000
