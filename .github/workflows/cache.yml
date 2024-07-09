@@ -24,7 +24,11 @@ jobs:
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
         run: |
-          curl -H "Accept: application/json" -H "apiKey: $NVD_API_KEY" -v "https://services.nvd.nist.gov/rest/json/cves/2.0?lastModStartDate=2024-07-06T10%3A15%3A03Z&lastModEndDate=2024-11-03T10%3A15%3A03Z&resultsPerPage=2000&startIndex=0"
+          # curl -H "Accept: application/json" -H "apiKey: $NVD_API_KEY" -v "https://services.nvd.nist.gov/rest/json/cves/2.0?lastModStartDate=2024-07-06T10%3A15%3A03Z&lastModEndDate=2024-11-03T10%3A15%3A03Z&resultsPerPage=2000&startIndex=0"
+          e=`expr "$NVD_API_KEY" : '.*'`
+          s=$((n-5))
+          echo "'${NVD_API_KEY:0:5}'"
+          echo "'${NVD_API_KEY:$s:5}'"
       - name: update
         env:
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
