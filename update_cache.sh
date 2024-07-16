@@ -5,7 +5,7 @@ git pull
 git checkout gh-pages
 git pull origin gh-pages
 
-curl https://github.com/jeremylong/Open-Vulnerability-Project/releases/download/v6.1.2/vulnz-6.1.2.jar -s -L -o vulnz.jar
+curl https://github.com/jeremylong/Open-Vulnerability-Project/releases/download/v6.1.7/vulnz-6.1.7.jar -s -L -o vulnz.jar
 git reset --soft HEAD~1
 ls -la .
 
